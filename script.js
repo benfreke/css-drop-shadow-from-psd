@@ -12,10 +12,10 @@ jQuery(document).ready(function() {
         
     // my default values
     var defaultValues = {
-        'hShadow' : 5,
-        'vShadow' : 5,
+        'hShadow' : 3,
+        'vShadow' : 4,
         'blur' : 1,
-        'spread' : 5,
+        'spread' : 2,
         'rgb' : {
             'red' : 0,
             'green': 0,
@@ -23,10 +23,11 @@ jQuery(document).ready(function() {
             'opacity': 1
         }
     };
+    var userValues = {};
     var previewBox = jQuery('#preview');
     var boxShadowTemplate = '\n\
--webkit-box-shadow: %hShadow%px %vShadow%px %blur%px %spread%px (%red%,%green%,%blue%,%opacity%) \n\
-box-shadow: %hShadow%px %vShadow%px %blur%px %spread%px (%red%,green%%,%blue%,%opacity%)';
+-webkit-box-shadow: %hShadow%px %vShadow%px %blur%px %spread%px rgba(%red%,%green%,%blue%,%opacity%); \n\
+box-shadow: %hShadow%px %vShadow%px %blur%px %spread%px rgba(%red%,%green%,%blue%,%opacity%)';
     var finalBoxShadow = '';
         
     // Angle = Degrees!
@@ -38,8 +39,7 @@ box-shadow: %hShadow%px %vShadow%px %blur%px %spread%px (%red%,green%%,%blue%,%o
     // color can be either hex or RGBA
 
     function calculateBoxShadow() 
-    {
-        console.log('starting calculateBoxShadow');
+    {        
         // Reset my values
         resetValues();
             
@@ -56,6 +56,7 @@ box-shadow: %hShadow%px %vShadow%px %blur%px %spread%px (%red%,green%%,%blue%,%o
     function resetValues() 
     {
         angleCount = 0;
+        userValues = defaultValues;
     }
         
     /**
@@ -64,7 +65,11 @@ box-shadow: %hShadow%px %vShadow%px %blur%px %spread%px (%red%,green%%,%blue%,%o
      */
     function getAngleValues() 
     {
-            
+        // Still need to do this
+        
+        
+        // Lets assume 120, which is a nice easy one to work out
+        angle = 30;
     }
         
     /**
@@ -72,7 +77,16 @@ box-shadow: %hShadow%px %vShadow%px %blur%px %spread%px (%red%,green%%,%blue%,%o
      */
     function getValues()
     {
-            
+        // Set the user values 
+        
+        // Because I need to conceptualise, I'll pretend the long value is going down right
+        vertical = Math.cos((angle * (Math.PI/180))) * parseInt(inDistance.val()); // cos
+        horizontal = Math.sin(angle * (Math.PI/180)) * parseInt(inDistance.val()); // sine
+        console.log(Math.cos( (angle * (Math.PI/180) ) ) );
+        console.log(parseInt(inDistance.val()));
+        console.log(vertical);
+        
+        // Now, which one is hShadow and which is vShadow?
     }
         
     /**
@@ -81,22 +95,20 @@ box-shadow: %hShadow%px %vShadow%px %blur%px %spread%px (%red%,green%%,%blue%,%o
     function setShadow()
     {            
         finalBoxShadow = boxShadowTemplate;
-        for (key in defaultValues) {
-            console.log(defaultValues[key]);
-            if (typeof(defaultValues[key]) == 'object') {
-                for(newkey in defaultValues[key]) {
-                    search = newkey;
-                    //console.log(search);
-                    finalBoxShadow = finalBoxShadow.replace(/%search%/g, defaultValues[key][newkey]);                        
+        for (key in userValues) {            
+            if (typeof(userValues[key]) == 'object') {
+                for(newkey in userValues[key]) {
+                    search = '%' + newkey + '%';                    
+                    finalBoxShadow = finalBoxShadow.replace(new RegExp(search, "g"), userValues[key][newkey]);                        
                 }
             } else {            
                 search = '%' + key + '%';   
                 //console.log(search);
-                finalBoxShadow = finalBoxShadow.replace(search, defaultValues[key]);                    
+                finalBoxShadow = finalBoxShadow.replace(new RegExp(search, "g"), userValues[key]);                    
             }
         }
-        console.log('my final value');
-        console.log(finalBoxShadow);
+        // Now apply it to the box        
+        previewBox.attr('style', finalBoxShadow);
     }    
     var calculator = jQuery('#calculate');
     calculator.click(function() {
