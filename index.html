@@ -8,38 +8,8 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Test of drop shadow</title>
         <script src="//code.jquery.com/jquery-1.7.2.min.js"></script>
-        <style>
-            body {
-                font-size: 16px;
-                line-height: 1.2em;
-                background-color: #DEDEDE;
-            }
-            label {
-                width: 85px;
-                display: inline-block;
-                margin: 0.5em 0;
-            }
-            #previewWrapper {
-                float: left;
-                width: 300px;
-                height: 300px;
-                padding: 50px;
-                background-color: #FFF;
-            }
-            #preview {
-                width: 100%;
-                height: 100%;
-                background-color: green;
-                border: 1px solid red;
-            }
-            #inputValues, #outputValues {
-                float: left;
-                width: 400px;
-            }
-            #outputValues {
-                clear: left;
-            }
-        </style>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css" />        
     </head>
     <body>
         <h1>Convert A PSD Drop Shadow into a CSS3 Drop Shadow</h1>
@@ -49,23 +19,25 @@ and open the template in the editor.
         
         <div id="inputValues">
             <div class="row">
-                <label for="in-angle" title="Whole numbers only please">Angle</label><input type="number" name="in-angle" id="in-angle" value=""/>
+                <label for="in-angle" title="Whole numbers only please">Angle</label><input type="number" name="in-angle" id="in-angle" />
             </div>
             <div class="row">                
-                <label for="in-distance" title="In Pixels">Distance</label><input type="number" name="in-distance" id="in-distance" value=""/>
+                <label for="in-distance" title="In Pixels">Distance</label><input type="number" name="in-distance" id="in-distance" />
             </div>
             <div class="row">                
-                <label for="in-spread" title="In Pixels">Spread</label><input type="number" name="in-spread" id="in-spread" value=""/>
+                <label for="in-spread" title="In Pixels">Spread</label><input type="number" name="in-spread" id="in-spread" />
             </div>
             <div class="row">                
                 <label for="in-size" title="In Pixels">Size</label><input type="number" name="in-size" id="in-size" value=""/>
             </div>
             <h2>Color</h2>
             <div class="row">                
-                <label for="in-hex" title="All 6 please">Hex Value</label><input type="number" name="in-hex" id="in-hex" minvalue="6" value=""/>
+                <label for="in-hex" title="All 6 please">Hex Value</label>
+                <input type="number" name="in-hex" id="in-hex" minvalue="6" />
             </div>            
             <div class="row">                
-                <label for="in-opacity" title="Betwen 0 and 1. Leave blank for opaque">Opacity</label><input type="number" name="in-opacity" id="in-opacity" value=""/>
+                <label for="in-opacity" title="Betwen 0 and 1. Leave blank for opaque">Opacity</label>
+                <input type="number" name="in-opacity" id="in-opacity"/>
             </div>    
             <div class="row">
                 <input id="calculate" type="button" value="Calculate" />
@@ -79,106 +51,6 @@ and open the template in the editor.
         <div id="outputValues">
            
         </div>
-        
-        <script>
-        // Lets do my funky shit
-        
-        // Users input data fields
-        var inAngle = jQuery('#in-angle');
-        var realAngle = 0;
-        var angleCount = 0;
-        var inDistance = jQuery('#in-distance');
-        var inSpread = jQuery('#in-spread');
-        var inSize = jQuery('#in-size');
-        var inHex = jQuery('#in-hex');
-        var inOpacity = jQuery('#in-opacity');
-        
-        // my default values
-        var defaultValues = {
-            'hShadow' : 5,
-            'vShadow' : 5,
-            'blur' : 1,
-            'spread' : 5,
-            'rgb' : {
-                'red' : 0,
-                'green': 0,
-                'blue': 0,
-                'opacity': 1
-            }
-        };
-        var previewBox = jQuery('#preview');
-        var boxShadowTemplate = '\n\
--webkit-box-shadow: %hShadow%px %vShadow%px %blur%px %spread%px (%red%,%green%,%blue%,%opacity%) \n\
-box-shadow: %hShadow%px %vShadow%px %blur%px %spread%px (%red%,green%%,%blue%,%opacity%)';
-        var finalBoxShadow = '';
-        
-        // Angle = Degrees!
-        // Distance = Hypotenuse
-        // Spread = Spread
-        // Size = Blur
-        
-        // box-shadow: h-shadow v-shadow blur spread color;
-        // color can be either hex or RGBA
-
-        function calculateBoxShadow() 
-        {
-            // Reset my values
-            resetValues();
-            
-            // Set my angle variables to their new values
-            getAngleValues();
-            
-            // Now update values based on my angle
-            getValues();
-            
-            // Finally update my css
-            setShadow();
-            
-        }
-        function resetValues() 
-        {
-            angleCount = 0;
-        }
-        
-        /**
-         * Based on the angle, work out which direction to go
-         * Also work out the angle I will be using in my maths
-         */
-        function getAngleValues() 
-        {
-            
-        }
-        
-        /**
-         * Now I know my angle values, I can update my base values
-         */
-        function getValues()
-        {
-            
-        }
-        
-        /**
-         * Creates the CSS string needed to generate the drop shadow
-         */
-        function setShadow()
-        {            
-            finalBoxShadow = boxShadowTemplate;
-            for (key in defaultValues) {
-                if (typeof(defaultValues[key]) == 'object') {
-                    for(newkey in defaultValues[key]) {
-                        search = newkey;
-                        finalBoxShadow = finalBoxShadow.replace(/%search%/g, defaultValues[key][newkey]);                        
-                    }
-                } else {            
-                    search = '%' + key + '%';                    
-                    finalBoxShadow = finalBoxShadow.replace(search, defaultValues[key]);                    
-                }
-            }
-            console.log(finalBoxShadow);
-        }
-        
-        jQuery('#calculate').click(calculateBoxShadow());
-        </script>
         
     </body>
 </html>
