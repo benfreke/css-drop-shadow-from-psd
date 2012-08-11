@@ -41,6 +41,15 @@ and open the template in the editor.
                 <input type="number" name="in-opacity" id="in-opacity"/>
             </div>    
             <div class="row">
+                <label for="rounding" title="Check to round up distances, otherwise values are rounded down">Rounding Up</label>
+                <select id="rounding">
+                    <option value="0">To the closest Integer</option>
+                    <option value="1">Always up</option>
+                    <option value="2">Always down</option>
+                    <option value="3">Don't touch my numbers!</option>
+                </select>
+            </div>
+            <div class="row">
                 <input id="calculate" type="button" value="Calculate" />
             </div>
         </div>
@@ -49,8 +58,11 @@ and open the template in the editor.
             <div id="preview">&nbsp;</div>
         </div>
         
-        <div id="outputValues">
-           
+        <div id="outputBox">
+           <h2>The CSS</h2>
+           <div id="outputValues">
+               
+           </div>
         </div>
         
     </body>

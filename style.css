@@ -20,11 +20,18 @@ label {
     height: 100%;
     background-color: green;
     border: 1px solid red;
+    transition: all 2s;
+    -moz-transition: all 2s;
+    -webkit-transition: all 2s;
+    -o-transition: all 2s;
 }
-#inputValues, #outputValues {
+#inputValues, #outputBox {
     float: left;
     width: 400px;
 }
-#outputValues {
+#outputBox {
     clear: left;
+    width: auto;
+    padding: 20px;
+    background-color: #FFF;
 }
