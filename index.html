@@ -20,28 +20,32 @@ and open the template in the editor.
         
         <div id="inputValues">
             <div class="row">
-                <label for="in-angle" title="Whole numbers only please">Angle</label><input type="number" name="in-angle" id="in-angle" />
+                <label for="in-angle" title="Whole numbers only please">Angle</label>
+                <input required="required" type="number" name="in-angle" id="in-angle" />
             </div>
             <div class="row">                
-                <label for="in-distance" title="In Pixels">Distance</label><input type="number" name="in-distance" id="in-distance" />
+                <label for="in-distance" title="In Pixels">Distance</label>
+                <input required="required" type="number" name="in-distance" id="in-distance" />
             </div>
             <div class="row">                
-                <label for="in-spread" title="In Pixels">Spread</label><input type="number" name="in-spread" id="in-spread" />
+                <label for="in-spread" title="In Pixels">Spread</label>
+                <input required="required" type="number" name="in-spread" id="in-spread" />
             </div>
             <div class="row">                
-                <label for="in-size" title="In Pixels">Size</label><input type="number" name="in-size" id="in-size" value=""/>
+                <label for="in-size" title="In Pixels">Size</label>
+                <input required="required" type="number" name="in-size" id="in-size" />
             </div>
             <h2>Color</h2>
             <div class="row">                
                 <label for="in-hex" title="All 6 please">Hex Value</label>
-                <input type="number" name="in-hex" id="in-hex" minvalue="6" />
+                <input required="required" type="number" name="in-hex" id="in-hex" minvalue="6" />
             </div>            
             <div class="row">                
                 <label for="in-opacity" title="Betwen 0 and 1. Leave blank for opaque">Opacity</label>
-                <input type="number" name="in-opacity" id="in-opacity"/>
+                <input required="required" type="number" step="0.1" name="in-opacity" id="in-opacity"/>
             </div>    
             <div class="row">
-                <label for="rounding" title="Check to round up distances, otherwise values are rounded down">Rounding Up</label>
+                <label for="rounding" title="Check to round up distances, otherwise values are rounded down">Rounding</label>
                 <select id="rounding">
                     <option value="0">To the closest Integer</option>
                     <option value="1">Always up</option>

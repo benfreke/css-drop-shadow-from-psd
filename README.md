@@ -6,3 +6,10 @@ This little script allows you to insert values from a PSD drop-shadow, and outpu
 I got sick of guessing what the right values are so I decided to create some javascript to convert it automatically for me. 
 
 Very much inspired by http://css3generator.com/
+
+Roadmap
+=======
+
+- Add a background and foreground colour option to the preview
+- Convert the JS to a jQuery plugin
+- Add validation to the form inputs (proper JS, not just HTML5 attributes)
