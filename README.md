@@ -18,3 +18,5 @@ Roadmap
 - Add a background and foreground colour option to the preview
 - Convert the JS to a jQuery plugin
 - Add validation to the form inputs (proper JS, not just HTML5 attributes)
+- Use a colour picker for the colour input
+- Allow the input of RGB colour values
