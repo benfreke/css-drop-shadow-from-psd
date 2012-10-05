@@ -7,6 +7,11 @@ I got sick of guessing what the right values are so I decided to create some jav
 
 Very much inspired by http://css3generator.com/
 
+Known Bugs
+==========
+- If all values except the angle are 0, the preview doesn't work
+- The trailing semi-colon is missing from the output code
+
 Roadmap
 =======
 
