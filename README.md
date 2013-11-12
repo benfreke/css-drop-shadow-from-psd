@@ -10,7 +10,6 @@ Very much inspired by http://css3generator.com/
 Known Bugs
 ==========
 - If all values except the angle are 0, the preview doesn't work
-- The trailing semi-colon is missing from the output code
 
 Roadmap
 =======
@@ -20,3 +19,8 @@ Roadmap
 - Add validation to the form inputs (proper JS, not just HTML5 attributes)
 - Use a colour picker for the colour input
 - Allow the input of RGB colour values
+
+Fixed
+=====
+
+- The trailing semi-colon is missing from the output code
