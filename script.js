@@ -31,7 +31,7 @@ jQuery(document).ready(function() {
     var previewBox = jQuery('#preview');
     var boxShadowTemplate = '\n\
 -webkit-box-shadow: %hShadow%px %vShadow%px %blur%px %spread%px rgba(%red%,%green%,%blue%,%opacity%); \n\
-box-shadow: %hShadow%px %vShadow%px %blur%px %spread%px rgba(%red%,%green%,%blue%,%opacity%)';
+box-shadow: %hShadow%px %vShadow%px %blur%px %spread%px rgba(%red%,%green%,%blue%,%opacity%);';
     var finalBoxShadow = '';
         
     // Angle = Degrees!
